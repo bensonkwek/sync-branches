@@ -4229,9 +4229,10 @@ exports.getBooleanInput = getBooleanInput;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function setOutput(name, value) {
     process.stdout.write(os.EOL);
-    command_1.issueCommand('set-output', { name }, value);
+    //command_1.issueCommand('set-output', { name }, value);
+    command_1.issueCommand(`echo "${name}=${value}" >> $GITHUB_OUTPUT`);
 }
-exports.setOutput = setOutput;
+exports.setOutput = setOutput.outputs.name;
 /**
  * Enables or disables the echoing of commands into stdout for the rest of the step.
  * Echoing is disabled by default if ACTIONS_STEP_DEBUG is not set.
