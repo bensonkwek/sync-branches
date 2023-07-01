@@ -7,7 +7,6 @@ async function run() {
   try {
     const fromBranch = core.getInput("FROM_BRANCH", { required: true });
     const toBranch = core.getInput("TO_BRANCH", { required: true });
-    const toBranchesArray = toBranch.split(",");
     const githubToken = core.getInput("GITHUB_TOKEN", { required: true });
     const pullRequestTitle = core.getInput("PULL_REQUEST_TITLE");
     const pullRequestBody = core.getInput("PULL_REQUEST_BODY");
@@ -19,9 +18,15 @@ async function run() {
     const team_reviewers = JSON.parse(core.getInput("TEAM_REVIEWERS"));
     const labels = JSON.parse(core.getInput("LABELS"));
 
+    const toBranchesArray = toBranch.split(",");
+
     for (let branch of toBranchesArray) {
       try {
-
+        
+        console.log(
+          `branches are ${toBranchesArray}`
+        );
+        
         console.log(
           `Should a pull request to ${branch} from ${fromBranch} be created?`
         );
