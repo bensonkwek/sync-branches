@@ -296,6 +296,7 @@ async function run() {
       core.getInput("CONTENT_COMPARISON").toLowerCase() === "true";
     const reviewers = JSON.parse(core.getInput("REVIEWERS"));
     const team_reviewers = JSON.parse(core.getInput("TEAM_REVIEWERS"));
+    const labels = JSON.parse(core.getInput("LABELS"));
 
     const toBranchesArray = toBranch.split(",");
 
