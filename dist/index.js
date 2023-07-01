@@ -4227,11 +4227,19 @@ exports.getBooleanInput = getBooleanInput;
  * @param     value    value to store. Non-string values will be converted to a string via JSON.stringify
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function setOutput(name, value) {
+/*function setOutput(name, value) {
     process.stdout.write(os.EOL);
-    //command_1.issueCommand('set-output', { name }, value);
-    command_1.issueCommand(`echo "${name}=${value}" >> $GITHUB_OUTPUT`);
+    command_1.issueCommand('set-output', { name }, value);
+}*/
+const fs = require('fs');
+
+function setOutput(name, value) {
+    fs.appendFileSync(process.env.GITHUB_OUTPUT, `${name}=${value}\n`);
 }
+
+exports.setOutput = setOutput;
+
+
 exports.setOutput = setOutput;
 /**
  * Enables or disables the echoing of commands into stdout for the rest of the step.
