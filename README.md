@@ -87,9 +87,9 @@ jobs:
           node-version: 12
       - name: Opening pull request
         id: pull
-        uses: tretuna/sync-branches@1.4.0
+        uses: bensonkwek/sync-multi-branches@1.4.0
         with:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           FROM_BRANCH: "main"
-          TO_BRANCH: "develop"
+          TO_BRANCH: "branch1,branch2"
 ```
